@@ -1,11 +1,8 @@
 import type { Movie, OmdbSearchResponse } from '../types/omdb'
 
-const API_URL = 'https://www.omdbapi.com/'
-
 export async function searchMovies(query: string): Promise<Movie[]> {
-  const apiKey = import.meta.env.VITE_OMDB_API_KEY
-  const url = `${API_URL}?apikey=${apiKey}&s=${encodeURIComponent(query)}`
-  console.log('[OMDb] Request URL:', url)
+  const url = `/api/movies?s=${encodeURIComponent(query)}`
+  console.log('[OMDb] Request to proxy:', url)
 
   const response = await fetch(url)
   console.log('[OMDb] Response status:', response.status)
